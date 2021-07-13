@@ -1,0 +1,23 @@
+{
+  "name": "color-trivia-game",
+  "version": "1.0.0",
+  "description": "A ClI based game on Colors",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TejasShekar/markTwo-colors_trivia.git"
+  },
+  "author": "Tejas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TejasShekar/markTwo-colors_trivia/issues"
+  },
+  "homepage": "https://github.com/TejasShekar/markTwo-colors_trivia#readme",
+  "dependencies": {
+    "chalk": "^4.1.1",
+    "readline-sync": "^1.4.10"
+  }
+}
