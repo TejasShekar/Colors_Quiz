@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TejasShekar/markTwo-colors_trivia.git"
+    "url": "git+https://github.com/TejasShekar/markTwo-Three-colors_trivia.git"
   },
   "author": "Tejas",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/TejasShekar/markTwo-colors_trivia/issues"
+    "url": "https://github.com/TejasShekar/markTwo-Three-colors_trivia/issues"
   },
-  "homepage": "https://github.com/TejasShekar/markTwo-colors_trivia#readme",
+  "homepage": "https://github.com/TejasShekar/markTwo-Three-colors_trivia#readme",
   "dependencies": {
     "chalk": "^4.1.1",
     "readline-sync": "^1.4.10"
