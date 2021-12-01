@@ -1,10 +1,21 @@
+/* Before running this program, run the following commands in terminal to install dependencies.
+1. npm install readline-sync
+2. npm install chalk
+*/
 let readlinesync = require("readline-sync");
 let chalk = require("chalk");
 
 console.log(
-  chalk.green("\nWELCOME TO QUIZ GAME\n\nCOLORS TRIVIA") +
-    chalk.bgRed("\nRules") +
-    ":\n1. You score 1 point if you answer correct.\n2. You loose 1 point if you answer wrong.\nIt's as simple as that 🙃 \n"
+  chalk.green("\nWELCOME TO QUIZ GAME\n") +
+    chalk.blue("C") +
+    chalk.red("O") +
+    chalk.cyan("L") +
+    chalk.magenta("O") +
+    chalk.red("R") +
+    chalk.blue("S") +
+    chalk.green(" TRIVIA\n") +
+    chalk.bgRed("\n\nRules") +
+    ":\n1. You score 1 point if you answer correct.\n2. You loose 1 point if you answer wrong.\n3. You need to answer all questions in each level to go to next level. \n\nIt's as simple as that 🙃\n"
 );
 
 let userName = readlinesync.question("So, Whats's your name?\n");
@@ -157,14 +168,14 @@ if (userVerifyAnswer === "600") {
 
   if (score === 15) {
     console.log(
-      chalk.black.bgWhite(
+      chalk.bold.bgWhite(
         "\nCongratulations on answering all the questions right !\n"
       )
     );
   }
 
   console.log(
-    chalk.bgRed("\n×-×-×-×-×-×-×-×||×-×-×-×-×-×-×-×") +
+    chalk.bgRed("\n×-×-×-×-×-×-×-×||×-×-×-×-×-×-×-×\n") +
       chalk.bgBlue("\nThankyou for playing.")
   );
   console.log(chalk.bold("\nYour final score is " + score));
@@ -177,7 +188,7 @@ if (userVerifyAnswer === "600") {
     console.log("\nYou should work on your Knowledge about colors 😐 \n");
   } else if (score >= 6 && score <= 10) {
     console.log(
-      "\nYou know quite well about Colors, but you still didn't answer all 15 question 😆 "
+      "\nYou know quite well about Colors, but you still didn't answer all question 😆 "
     );
   } else if (score >= 11 && score <= 15) {
     console.log("Wow, seems like quiz on Colors is your forte !");
