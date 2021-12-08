@@ -2,6 +2,9 @@
 
 This is a CLI based game to see how well you know about colors.
 
+
+You can directly play the game by clicking on the link provided in the about section of this repository or follow the instructions below to play it locally on your system resources.
+
 ## Installation
 
 Even though I have included required dependencies along with the Javascript file, you might have issues running it on your terminal. So, I would recommend you to install the below dependencies incase you have issues running the JS file.
