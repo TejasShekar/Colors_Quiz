@@ -2,8 +2,8 @@
 1. npm install readline-sync
 2. npm install chalk
 */
-let readlinesync = require("readline-sync");
-let chalk = require("chalk");
+const readlinesync = require("readline-sync");
+const chalk = require("chalk");
 
 console.log(
   chalk.green("\nWELCOME TO QUIZ GAME\n") +
@@ -18,10 +18,10 @@ console.log(
     ":\n1. You score 1 point if you answer correct.\n2. You loose 1 point if you answer wrong.\n3. You need to answer all questions in each level to go to next level. \n\nIt's as simple as that 🙃\n"
 );
 
-let userName = readlinesync.question("So, Whats's your name?\n");
+const userName = readlinesync.question("So, Whats's your name?\n");
 let score = 0;
 
-console.log("\nWelcome " + chalk.bold.green(userName));
+console.log(`\nWelcome ${chalk.bold.green(userName)}`);
 
 console.log(
   chalk.underline(
@@ -29,28 +29,25 @@ console.log(
   )
 );
 
-let userVerifyAnswer = readlinesync.question(
+const userVerifyAnswer = readlinesync.question(
   "Calculate the below mathematical expression\n(25*(100+5)/5+125-50) = "
 );
 //Use BODMAS to solve the above expression
 
-function ask(question, answer) {
+const ask = (question, answer) => {
   let userAnswer = readlinesync.question(question);
-  if (userAnswer.toUpperCase() === answer.toUpperCase()) {
-    console.log(chalk.green("Right answer !"));
-    score = score + 1;
-  } else {
-    console.log(chalk.red("Wrong answer"));
-    score = score - 1;
-  }
-  console.log("Your current score is ", score);
-}
+  let result =
+    userAnswer.toUpperCase() === answer.toUpperCase()
+      ? { status: chalk.green("Right answer !"), count: (score += 1) }
+      : { status: chalk.red("Wrong answer !"), count: (score -= 1) };
+  console.log(result.status, `\nYour current score is ${result.count}`);
+};
 
 if (userVerifyAnswer === "600") {
   console.log(
-    chalk.green("Right Answer !") +
-      "\nYou are a human.\n\nLet's play " +
-      chalk.black.bgGreen("Level 1")
+    `${chalk.green(
+      "Right Answer !"
+    )}\nYou are a human.\n\nLet's play ${chalk.black.bgGreen("Level 1")}`
   );
 
   //Level-One
@@ -82,8 +79,7 @@ if (userVerifyAnswer === "600") {
     },
   ];
 
-  for (let i = 0; i < levelOneQuestions.length; i++) {
-    let currentQuestion = levelOneQuestions[i];
+  for (let currentQuestion of levelOneQuestions) {
     ask(currentQuestion.question, currentQuestion.answer);
   }
 
@@ -116,12 +112,12 @@ if (userVerifyAnswer === "600") {
 
   if (score === 5) {
     console.log(
-      "\nYou are doing well. Let me ask some more...\n" +
-        chalk.black.bgYellow("\nLevel Two\n")
+      `\nYou are doing well. Let me ask some more...\n${chalk.black.bgYellow(
+        "\nLevel Two\n"
+      )}`
     );
 
-    for (let i = 0; i < levelTwoQuestions.length; i++) {
-      let currentQuestion = levelTwoQuestions[i];
+    for (let currentQuestion of levelTwoQuestions) {
       ask(currentQuestion.question, currentQuestion.answer);
     }
   }
@@ -156,12 +152,12 @@ if (userVerifyAnswer === "600") {
 
   if (score === 10) {
     console.log(
-      "\nInteresting... Let me ask you a few more...\n" +
-        chalk.black.bgCyan("\nLevel Three")
+      `\nInteresting... Let me ask you a few more...\n${chalk.black.bgCyan(
+        "\nLevel Three"
+      )}`
     );
 
-    for (let i = 0; i < levelThreeQuestions.length; i++) {
-      let currentQuestion = levelThreeQuestions[i];
+    for (let currentQuestion of levelThreeQuestions) {
       ask(currentQuestion.question, currentQuestion.answer);
     }
   }
@@ -169,7 +165,7 @@ if (userVerifyAnswer === "600") {
   if (score === 15) {
     console.log(
       chalk.bold.bgWhite(
-        "\nCongratulations on answering all the questions right !\n"
+        "\nCongratulations. You have answered all the questions right !\n"
       )
     );
   }
@@ -178,27 +174,41 @@ if (userVerifyAnswer === "600") {
     chalk.bgRed("\n×-×-×-×-×-×-×-×||×-×-×-×-×-×-×-×\n") +
       chalk.bgBlue("\nThankyou for playing.")
   );
-  console.log(chalk.bold("\nYour final score is " + score));
+  console.log(chalk.bold(`\nYour final score is ${score}`));
 
-  /*You can make the below 'if' condition more concise to 
-	> if (score && score <= 2) 
-	as well because score > 0 is truthy*/
-
-  if (score > 0 && score <= 5) {
-    console.log("\nYou should work on your Knowledge about colors 😐 \n");
-  } else if (score >= 6 && score <= 10) {
-    console.log(
-      "\nYou know quite well about Colors, but you still didn't answer all question 😆 "
-    );
-  } else if (score >= 11 && score <= 15) {
-    console.log("Wow, seems like quiz on Colors is your forte !");
-  } else {
-    console.log(
-      "\nBut, seriously ? Negative score ? 😐\nYou better start googling about colors !"
-    );
+  switch (score) {
+    case 0:
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+    case 5:
+      console.log("\nYou should work on your Knowledge about colors 😐 \n");
+      break;
+    case 6:
+    case 7:
+    case 8:
+    case 9:
+    case 10:
+      console.log(
+        "\nYou know quite well about Colors, but you still didn't answer all question 😆 "
+      );
+      break;
+    case 11:
+    case 12:
+    case 13:
+    case 14:
+    case 15:
+      console.log("Wow, seems like quiz on Colors is your forte !");
+      break;
+    default:
+      console.log(
+        "\nBut, seriously ? Negative score ? 😐\nYou better start googling about colors !"
+      );
+      break;
   }
 } else {
   console.log(
-    "\nI didn't know you were weak in solving simple math question. Try again !!!"
+    "\nI didn't know you were weak in solving simple math question 😝. Try again !!!"
   );
 }
